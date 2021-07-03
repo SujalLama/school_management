@@ -1,12 +1,21 @@
 const express = require('express')
 require('dotenv').config();
 const db = require('./models/index');
+
+//routes import
+const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
+
 const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello world.</h1>')
+    res.send('<h3>Welcome to school management system.</h3>')
 })
+
+// routes
+app.use('/auth', authRoute);
+app.use('/users', userRoute);
 
 const connectDB = async () => {
     try {

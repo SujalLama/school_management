@@ -1,9 +1,9 @@
 module.exports = {
-  username: process.env.USERNAME,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  username: "postgres",
+  password: "sanjal12345!",
+  database: "school_db",
   host: process.env.HOST,
-  dialect: process.env.DIALECT,
+  dialect: "postgres",
 }
 
 // {

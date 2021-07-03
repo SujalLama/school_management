@@ -6,13 +6,18 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config');
-const db = {};
+// const config = require(path.join(__dirname, '/../config/config.json'))[env]
+// const db = {};
 
 let sequelize;
-sequelize = new Sequelize(config.database, 'postgres', config.password, {
-  host: config.host,
-  dialect: config.dialect
+sequelize = new Sequelize(config.database, config.username, config.password, {
+  host: 'localhost',
+  dialect: 'postgres'
 });
+
+const db = {
+  User: require('./user')(sequelize, Sequelize.DataTypes)
+}
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
