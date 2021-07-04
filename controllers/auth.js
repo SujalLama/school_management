@@ -27,8 +27,15 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
     try {
-        const {email, password, username} = req.body
-         const userExist = await db.User.findOne({where: {email}});
+        const {email, password, username, role} = req.body
+        const userExist = await db.User.findOne({where: {email}});
+
+        const roleExist = await db.Role.findOne({where: {role}});
+
+        if(!roleExist) {
+            return res.status(400).json({message: 'Role doesn\'t exists.'})
+        }
+
         if(userExist) {
             return res.status(400).json({message: 'You have already registered.'})
         }
@@ -37,7 +44,7 @@ const register = async (req, res) => {
             return res.status(400).json({message: "Password must be greater than 5."})
         }
         
-        const user = await db.User.create({email, password, username});
+        const user = await db.User.create({email, password, username, roleId: roleExist.id});
         const token = user.generateToken();
         res.status(200).json({token});
     } catch (error) {

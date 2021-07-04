@@ -105,7 +105,7 @@ const createUser = async (req, res) => {
         const users = await db.User.create({username, password, email, roleId: roleExist.id});
         res.json({users});
     } catch (error) {
-        res.json({error: errorHandler(error)});
+        res.json({error});
     }
 }
 
