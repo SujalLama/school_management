@@ -57,9 +57,9 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.associate = (models) => {
-    // User.hasOne(models.Contact, {
-    //   foreignKey: 'userId'
-    // });
+    User.hasOne(models.Parent, {
+      foreignKey: 'userId'
+    });
     User.belongsTo(models.Role, {
       foreignKey: 'roleId'
     })

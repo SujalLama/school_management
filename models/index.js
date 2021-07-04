@@ -18,6 +18,7 @@ sequelize = new Sequelize(config.database, config.username, config.password, {
 const db = {
   User: require('./user')(sequelize, Sequelize.DataTypes),
   Role: require('./role')(sequelize, Sequelize.DataTypes),
+  Parent: require('./parent')(sequelize, Sequelize.DataTypes),
 }
 
 Object.keys(db).forEach(modelName => {

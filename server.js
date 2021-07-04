@@ -6,6 +6,7 @@ const db = require('./models/index');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
 const roleRoute = require('./routes/role');
+const parentRoute = require('./routes/parent');
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoute);
 app.use('/users', userRoute);
 app.use('/roles', roleRoute);
+app.use('/parents', parentRoute);
 
 const connectDB = async () => {
     try {
