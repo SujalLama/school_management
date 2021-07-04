@@ -32,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    roleId: {
+      type: DataTypes.INTEGER
+    },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -53,17 +56,17 @@ module.exports = (sequelize, DataTypes) => {
     return newtoken;
   }
 
-//   User.associate = (models) => {
-//     User.hasOne(models.Contact, {
-//       foreignKey: 'userId'
-//     });
-//     User.hasMany(models.Project, {
-//       foreignKey: 'userId'
-//     })
-//     User.belongsToMany(models.Team, {
-//       through: 'members'
-//     })
-//   };
+  User.associate = (models) => {
+    // User.hasOne(models.Contact, {
+    //   foreignKey: 'userId'
+    // });
+    User.belongsTo(models.Role, {
+      foreignKey: 'roleId'
+    })
+    // User.belongsToMany(models.Team, {
+    //   through: 'members'
+    // })
+  };
 
   return User;
 };

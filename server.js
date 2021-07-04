@@ -5,6 +5,7 @@ const db = require('./models/index');
 //routes import
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
+const roleRoute = require('./routes/role');
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 // routes
 app.use('/auth', authRoute);
 app.use('/users', userRoute);
+app.use('/roles', roleRoute);
 
 const connectDB = async () => {
     try {

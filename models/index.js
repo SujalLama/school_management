@@ -16,7 +16,8 @@ sequelize = new Sequelize(config.database, config.username, config.password, {
 });
 
 const db = {
-  User: require('./user')(sequelize, Sequelize.DataTypes)
+  User: require('./user')(sequelize, Sequelize.DataTypes),
+  Role: require('./role')(sequelize, Sequelize.DataTypes),
 }
 
 Object.keys(db).forEach(modelName => {
