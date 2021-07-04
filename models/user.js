@@ -60,6 +60,11 @@ module.exports = (sequelize, DataTypes) => {
     User.hasOne(models.Parent, {
       foreignKey: 'userId'
     });
+
+    User.hasOne(models.Teacher, {
+      foreignKey: 'userId'
+    });
+    
     User.belongsTo(models.Role, {
       foreignKey: 'roleId'
     })
