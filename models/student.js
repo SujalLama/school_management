@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Parent = sequelize.define('parents', {
+  const Student = sequelize.define('students', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
+    parentId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -48,14 +52,16 @@ module.exports = (sequelize, DataTypes) => {
         }
   });
 
-  Parent.associate = (models) => {
-    Parent.belongsTo(models.User, {
+  Student.associate = (models) => {
+    Student.belongsTo(models.User, {
       foreignKey: 'userId'
     })
-   Parent.hasMany(models.Student, {
-     foreignKey: 'parentId'
-   })
+
+    Student.belongsTo(models.Parent, {
+        foreignKey: 'parentId'
+    })
+   
   };
 
-  return Parent;
+  return Student;
 };

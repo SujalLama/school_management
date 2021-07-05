@@ -62,6 +62,9 @@ module.exports = (sequelize, DataTypes) => {
     });
     User.belongsTo(models.Role, {
       foreignKey: 'roleId'
+    });
+    User.hasOne(models.Student, {
+      foreignKey: 'userId'
     })
     // User.belongsToMany(models.Team, {
     //   through: 'members'

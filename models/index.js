@@ -19,6 +19,7 @@ const db = {
   User: require('./user')(sequelize, Sequelize.DataTypes),
   Role: require('./role')(sequelize, Sequelize.DataTypes),
   Parent: require('./parent')(sequelize, Sequelize.DataTypes),
+  Student: require('./student')(sequelize, Sequelize.DataTypes),
 }
 
 Object.keys(db).forEach(modelName => {
