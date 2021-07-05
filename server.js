@@ -8,6 +8,7 @@ const userRoute = require('./routes/user');
 const roleRoute = require('./routes/role');
 const parentRoute = require('./routes/parent');
 const teacherRoute = require('./routes/teacher');
+const studentRoute = require('./routes/student');
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use('/users', userRoute);
 app.use('/roles', roleRoute);
 app.use('/parents', parentRoute);
 app.use('/teachers', teacherRoute);
+app.use('/students', studentRoute);
 
 const connectDB = async () => {
     try {

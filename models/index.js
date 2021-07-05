@@ -20,6 +20,7 @@ const db = {
   Role: require('./role')(sequelize, Sequelize.DataTypes),
   Parent: require('./parent')(sequelize, Sequelize.DataTypes),
   Teacher: require('./teacher')(sequelize, Sequelize.DataTypes),
+  Student: require('./student')(sequelize, Sequelize.DataTypes),
 }
 
 Object.keys(db).forEach(modelName => {
