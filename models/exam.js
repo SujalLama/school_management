@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Course = sequelize.define('courses', {
+  const Exam = sequelize.define('exams', {
     id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,30 +10,31 @@ module.exports = (sequelize, DataTypes) => {
        allowNull: false,
       type: DataTypes.STRING
      },
-     description: {
-      type: DataTypes.STRING
+     start_date: {
+      type: DataTypes.DATE,
+      allowNull: false
      },
-     gradeId: {
+     examTypeId: {
          type: DataTypes.INTEGER,
          allowNull: false
      }
   }, {timestamps: false});
 
-  Course.associate = (models) => {
-    Course.belongsTo(models.Grade, {
-      foreignKey: 'gradeId'
+  Exam.associate = (models) => {
+    Exam.belongsTo(models.ExamType, {
+      foreignKey: 'examTypeId'
     })
 
-    Course.belongsToMany(models.Student, {
-        foreignKey: 'courseId',
+    Exam.belongsToMany(models.Student, {
+        foreignKey: 'examId',
         through: 'exam_results'
     })
 
-    Course.belongsToMany(models.Exam, {
-        foreignKey: 'courseId',
+    Exam.belongsToMany(models.Course, {
+        foreignKey: 'examId',
         through: 'exam_results'
     })
   };
 
-  return Course;
+  return Exam;
 };
