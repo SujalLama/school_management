@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    gradeId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -39,6 +43,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'teacherId'
     })
    
+    Classroom.belongsTo(models.Grade, {
+      foreignKey: 'gradeId'
+    })
   };
 
   return Classroom;

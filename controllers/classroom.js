@@ -43,9 +43,9 @@ const getSingleClassroom = async (req, res) => {
 const updateClassroom = async (req, res) => {
     try {
        
-        const { year, section, remarks, teacherId, status} = req.body;
+        const { year, section, remarks, teacherId, status, gradeId} = req.body;
 
-        await db.Classroom.update({ year, section, remarks, teacherId, status}, 
+        await db.Classroom.update({ year, section, remarks, teacherId, status, gradeId}, 
         {where: {id: req.params.id}})
         res.json({message: 'Classroom is successfully updated.'});
 
@@ -56,9 +56,9 @@ const updateClassroom = async (req, res) => {
 
 const createClassroom = async (req, res) => {
     try {
-        const { year, section, remarks, teacherId, status} = req.body;
+        const { year, section, remarks, teacherId, status, gradeId} = req.body;
 
-        const Classrooms = await db.Classroom.create({year, section, remarks, teacherId, status});
+        const Classrooms = await db.Classroom.create({year, section, remarks, teacherId, status, gradeId});
         res.json({Classrooms});
     } catch (error) {
         res.json({error});

@@ -10,6 +10,7 @@ const parentRoute = require('./routes/parent');
 const teacherRoute = require('./routes/teacher');
 const studentRoute = require('./routes/student');
 const classroomRoute = require('./routes/classroom');
+const gradeRoute = require('./routes/grade');
 
 const app = express();
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use('/parents', parentRoute);
 app.use('/teachers', teacherRoute);
 app.use('/students', studentRoute);
 app.use('/classrooms', classroomRoute);
+app.use('/grades', gradeRoute);
 
 const connectDB = async () => {
     try {
