@@ -60,6 +60,11 @@ module.exports = (sequelize, DataTypes) => {
     Student.belongsTo(models.Parent, {
         foreignKey: 'parentId'
     })
+
+    Student.belongsToMany(models.Classroom, {
+      foreignKey: 'studentId',
+      through: 'classroom_students'
+    })
    
   };
 

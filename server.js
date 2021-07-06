@@ -12,6 +12,7 @@ const studentRoute = require('./routes/student');
 const classroomRoute = require('./routes/classroom');
 const gradeRoute = require('./routes/grade');
 const courseRoute = require('./routes/course');
+const classroomStudentRoute = require('./routes/classroomStudent');
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/students', studentRoute);
 app.use('/classrooms', classroomRoute);
 app.use('/grades', gradeRoute);
 app.use('/courses', courseRoute);
+app.use('/classroom_students', classroomStudentRoute);
 
 const connectDB = async () => {
     try {
