@@ -23,6 +23,7 @@ const db = {
   Student: require('./student')(sequelize, Sequelize.DataTypes),
   Classroom: require('./classroom')(sequelize, Sequelize.DataTypes),
   Grade: require('./grade')(sequelize, Sequelize.DataTypes),
+  Course: require('./course')(sequelize, Sequelize.DataTypes),
 }
 
 Object.keys(db).forEach(modelName => {
